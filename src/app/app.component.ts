@@ -16,7 +16,7 @@ export class AppComponent {
   columnDefs: ColDef[] = [
     { field: 'id', headerName: 'ID' },
     { field: 'name', headerName: 'Name' },
-    { field: 'description', headerName: 'Description' },
+    { field: 'description', headerName: 'Description',editable:true },
     { field: 'price', headerName: 'Price' },
     {
   headerName: 'Status',
