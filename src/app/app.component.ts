@@ -12,6 +12,17 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+deleteRow(id: number) {
+  this.rowData = this.rowData.filter(row => row.id !== id);
+}
+ngAfterViewInit() {
+  document.addEventListener('click', (event: any) => {
+    if (event.target && event.target.classList.contains('btn-delete')) {
+      const id = Number(event.target.getAttribute('data-id'));
+      this.deleteRow(id);
+    }
+  });
+}
 
   columnDefs: ColDef[] = [
     { field: 'id', headerName: 'ID' },
@@ -38,7 +49,20 @@ export class AppComponent {
       </span>
     `;
   }
+},
+{
+  headerName: 'Actions',
+  field: 'id',
+  cellRenderer: (params: any) => {
+    return `
+      <button class="btn-delete" data-id="${params.value}">
+        Delete
+      </button>
+    `;
+  },
+  width: 120
 }
+
 
   ];
 
