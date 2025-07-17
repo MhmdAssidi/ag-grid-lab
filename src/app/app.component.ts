@@ -17,7 +17,7 @@ export class AppComponent {
     { field: 'id', headerName: 'ID' },
     { field: 'name', headerName: 'Name' },
     { field: 'description', headerName: 'Description',editable:true },
-    { field: 'price', headerName: 'Price' },
+    { field: 'price', headerName: 'Price',  valueFormatter: (params) => `$${params.value.toFixed(2)}` },
     {
   headerName: 'Status',
   field: 'status',
